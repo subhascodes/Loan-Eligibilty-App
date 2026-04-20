@@ -47,6 +47,19 @@ ipcMain.on('close-window', () => {
   }
 });
 
+ipcMain.on('maximize-window', () => {
+  if (!win) {
+    return;
+  }
+
+  if (win.isMaximized()) {
+    win.unmaximize();
+    return;
+  }
+
+  win.maximize();
+});
+
 const { spawn } = require('child_process');
 
 ipcMain.handle('predict-loan', async (event, formData) => {

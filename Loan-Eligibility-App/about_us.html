@@ -1,1 +1,91 @@
-<div class="custom-title-bar">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Loan AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="overlay"></div>
+
+  <div class="custom-title-bar">
+    <img src="./assets/menu-bar.png" alt="Menu" class="title-bar-icon" id="menuButtonTop">
+    <div class="title-text">Loan AI</div>
+    <div class="title-bar-spacer"></div>
+    <img src="./assets/minimize-icon.png" alt="Minimize" class="title-bar-icon" id="minimizeButton">
+    <img src="./assets/maximize-icon.png" alt="Maximize" class="title-bar-icon" id="maximizeButton">
+    <img src="./assets/close-icon.png" alt="Close" class="title-bar-icon" id="closeButton">
+  </div>
+
+  <main class="about-us-container">
+    <section class="about-us-hero">
+      <p class="about-us-kicker">About the Project</p>
+      <h1 class="about-us-heading">Loan Eligibility Prediction App</h1>
+      <p class="about-us-summary">
+        This project was built to make loan screening faster and easier to understand. It uses a trained machine learning
+        model to predict approval outcomes from applicant details, and it includes a visualization page for exploring the
+        dataset behind those predictions.
+      </p>
+    </section>
+
+    <section class="about-us-desc-container">
+      <div class="about-us-desc">
+        <div class="about-card-grid">
+          <article class="about-card">
+            <span class="about-card-label">GitHub</span>
+            <h2>Source Code</h2>
+            <p>
+              The source code for this project is available on GitHub. You can review the implementation, track updates,
+              and use it as a reference for your own machine learning or Electron-based projects.
+            </p>
+            <a class="about-link-button" href="https://github.com/subhascodes/Loan-Eligibilty-App" target="_blank" rel="noopener noreferrer">
+              Visit GitHub
+            </a>
+          </article>
+
+          <article class="about-card">
+            <span class="about-card-label">Contact</span>
+            <h2>Get in Touch</h2>
+            <ul class="about-contact-list">
+              <li><strong>Email:</strong> subhasmitas188@gmail.com</li>
+              <li><strong>Phone:</strong> Not provided</li>
+              <li><strong>Location:</strong> Chennai, India</li>
+            </ul>
+            <p class="about-card-note">
+              For project-related questions or collaboration requests, email is the preferred contact method.
+            </p>
+          </article>
+
+          <article class="about-card about-card-wide">
+            <span class="about-card-label">What It Does</span>
+            <h2>Built for practical eligibility checks</h2>
+            <p>
+              Users enter applicant details, the app sends those values through the prediction pipeline, and the result is
+              shown on a clear approval or rejection screen. The goal is to provide a simple, explainable workflow rather
+              than a black-box experience.
+            </p>
+          </article>
+        </div>
+
+        <div class="about-footer-actions">
+          <a class="about-secondary-link" href="index.html">Back to Prediction</a>
+          <a class="about-secondary-link" href="data_visualization.html">View Visualizations</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="sidebar">
+    <img src="./assets/menu-expanded-bar.png" alt="Menu" class="title-bar-icon" id="menuButtonSidebar">
+    <ul>
+      <li><a href="#" style="color:white;" id="loanPrediction">Loan Prediction</a></li>
+      <li><a href="#" style="color:white;" id="loanViz">Loan Data Visualization</a></li>
+      <li><a href="#" style="color:white;" id="about">About us</a></li>
+    </ul>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
