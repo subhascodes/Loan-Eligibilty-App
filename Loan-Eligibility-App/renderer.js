@@ -97,11 +97,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const predictButton = document.getElementById('predictButton');
   if (predictButton) {
     predictButton.addEventListener('click', async () => {
-      if (!canUseElectronApi || typeof window.electronAPI.predictLoan !== 'function') {
-        alert('Loan prediction is available in the desktop Electron app. The Vercel build serves the public site only.');
-        return;
-      }
-
       console.log("Predict clicked!")
       const formData = {
         Gender: document.getElementById('gender').value,
@@ -120,7 +115,22 @@ window.addEventListener('DOMContentLoaded', () => {
       console.log("Form Data to send:", formData);
 
       try {
-        const result = await window.electronAPI.predictLoan(formData);
+        const result = canUseElectronApi && typeof window.electronAPI.predictLoan === 'function'
+          ? await window.electronAPI.predictLoan(formData)
+          : await fetch('/api/predict', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+            }).then(async (response) => {
+              const data = await response.json();
+              if (!response.ok) {
+                throw new Error(data.error || 'Prediction request failed');
+              }
+              return data;
+            });
+
         console.log("Prediction result:", result);
         localStorage.setItem('confidenceScore', result.probability);
         if (result.prediction === 'Y') {

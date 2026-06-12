@@ -87,7 +87,7 @@ If you want to publish the public-facing site on Vercel, deploy the `Loan-Eligib
 1. In Vercel, choose the repository and set the root directory to `Loan-Eligibility-App`.
 2. Keep the app as a static site with `index.html` as the entry page.
 3. The About page includes the public GitHub link and contact details.
-4. The prediction form will still open in the desktop Electron app, while the Vercel build serves the public informational pages.
+4. The prediction form can now call the Python `/api/predict` function in the browser build, while Electron still uses IPC locally.
 
 ---
 
