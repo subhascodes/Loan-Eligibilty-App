@@ -78,6 +78,19 @@ npm start
 
 ---
 
+## 🌐 Vercel Deployment
+
+This repository contains an Electron desktop app, so the full prediction workflow runs locally.
+If you want to publish the public-facing site on Vercel, deploy the `Loan-Eligibility-App/` folder as the project root.
+
+### Recommended setup
+1. In Vercel, choose the repository and set the root directory to `Loan-Eligibility-App`.
+2. Keep the app as a static site with `index.html` as the entry page.
+3. The About page includes the public GitHub link and contact details.
+4. The prediction form will still open in the desktop Electron app, while the Vercel build serves the public informational pages.
+
+---
+
 ## 🔗 Resources
 
 - 🎨 [Frontend Design (Figma)](https://www.figma.com/design/AdG1x9TFtwiQkrg8nxJ9LI/AI-Project?node-id=0-1&t=yoTCN6fI0PiNBE7r-1)

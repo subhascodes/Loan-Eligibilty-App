@@ -1,26 +1,23 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // Predict Button (only exists on some pages)
-  //const predictButton = document.getElementById('predictButton');
-  //if (predictButton) {
-    //predictButton.addEventListener('click', () => {
-      //alert('Predict button clicked! (Functionality coming soon)');
-    //});
-  //}
+  const minimizeButton = document.getElementById('minimizeButton');
+  const maximizeButton = document.getElementById('maximizeButton');
+  const closeButton = document.getElementById('closeButton');
+  const canUseElectronApi = typeof window.electronAPI !== 'undefined';
 
   // Title bar buttons
-  if (minimizeButton) {
+  if (minimizeButton && canUseElectronApi) {
     minimizeButton.addEventListener('click', () => {
       window.electronAPI.minimize();
     });
   }
   
-  if (maximizeButton) {
+  if (maximizeButton && canUseElectronApi) {
     maximizeButton.addEventListener('click', () => {
       window.electronAPI.maximize();
     });
   }
   
-  if (closeButton) {
+  if (closeButton && canUseElectronApi) {
     closeButton.addEventListener('click', () => {
       window.electronAPI.close();
     });
@@ -100,6 +97,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const predictButton = document.getElementById('predictButton');
   if (predictButton) {
     predictButton.addEventListener('click', async () => {
+      if (!canUseElectronApi || typeof window.electronAPI.predictLoan !== 'function') {
+        alert('Loan prediction is available in the desktop Electron app. The Vercel build serves the public site only.');
+        return;
+      }
+
       console.log("Predict clicked!")
       const formData = {
         Gender: document.getElementById('gender').value,
